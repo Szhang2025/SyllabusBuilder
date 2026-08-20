@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SCSU Syllabus Template</title>
+  <title>SCSU Syllabus Generator - Dr. Shiju Zhang</title>
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
+    /* --- Base & Layout --- */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -61,6 +62,8 @@
       font-size: 0.9rem;
       color: #1a3a5e;
     }
+
+    /* --- Form --- */
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -91,7 +94,7 @@
       color: #c8102e;
       width: 1.1rem;
     }
-    .form-group input, .form-group textarea {
+    .form-group input, .form-group textarea, .form-group select {
       padding: 0.6rem 0.9rem;
       border: 1px solid #d0d9e6;
       border-radius: 12px;
@@ -100,7 +103,7 @@
       transition: 0.2s;
       font-family: inherit;
     }
-    .form-group input:focus, .form-group textarea:focus {
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
       border-color: #c8102e;
       outline: 2px solid #c8102e30;
       box-shadow: 0 0 0 3px #c8102e20;
@@ -109,6 +112,8 @@
       resize: vertical;
       min-height: 70px;
     }
+
+    /* --- Buttons --- */
     .btn-group {
       display: flex;
       flex-wrap: wrap;
@@ -144,14 +149,6 @@
       border-color: #a00d25;
       box-shadow: 0 4px 10px rgba(200, 16, 46, 0.3);
     }
-    .btn-outline {
-      background: transparent;
-      border: 1px solid #c8102e;
-      color: #c8102e;
-    }
-    .btn-outline:hover {
-      background: #c8102e10;
-    }
     .btn-download {
       background: #1a3a5e;
       border-color: #1a3a5e;
@@ -161,6 +158,8 @@
       background: #0f2a44;
       box-shadow: 0 4px 10px #1a3a5e40;
     }
+
+    /* --- Syllabus Preview --- */
     .syllabus-preview {
       margin-top: 2rem;
       border-top: 2px dashed #dce3ec;
@@ -267,13 +266,6 @@
     #syllabusContent .schedule-table tr:nth-child(even) {
       background: #f8fafc;
     }
-    .footer-actions {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 0.8rem;
-      margin-top: 1.5rem;
-    }
     @media (max-width: 680px) {
       .form-grid {
         grid-template-columns: 1fr;
@@ -296,61 +288,70 @@
 <div class="container" id="appContainer">
   <h1><i class="fas fa-pen-fancy"></i> Syllabus Builder · SCSU</h1>
   <div class="subhead">
-    <span><i class="fas fa-university"></i> St. Cloud State University</span>
-    <span><i class="fas fa-file-alt"></i> Template v1.0</span>
+    <span><i class="fas fa-user-graduate"></i> Dr. Shiju Zhang</span>
+    <span><i class="fas fa-file-alt"></i> Official Catalog Data</span>
   </div>
 
   <!-- INPUT FORM -->
   <div class="form-grid" id="inputForm">
-    <div class="form-group"><label><i class="fas fa-book-open"></i> Course Title</label><input type="text" id="courseTitle" placeholder="e.g. STAT 1150: Intro to Statistics" value="STAT 1150: Introduction to Statistics"></div>
-    <div class="form-group"><label><i class="fas fa-user-tie"></i> Instructor Name</label><input type="text" id="instructorName" placeholder="Dr. Jane Smith" value="Dr. Jane Smith"></div>
-    <div class="form-group"><label><i class="fas fa-calendar-day"></i> Meeting Days</label><input type="text" id="meetingDays" placeholder="M, W, F" value="M, W, F"></div>
-    <div class="form-group"><label><i class="fas fa-clock"></i> Meeting Times</label><input type="text" id="meetingTimes" placeholder="10:00 – 10:50 AM" value="10:00 – 10:50 AM"></div>
-    <div class="form-group"><label><i class="fas fa-door-open"></i> Classroom</label><input type="text" id="classroom" placeholder="HHS 134" value="HHS 134"></div>
+    <div class="form-group">
+      <label><i class="fas fa-list"></i> Select Course</label>
+      <select id="courseSelector">
+        <option value="STAT353-41">STAT 353-41: Statistical Methods I for Engineers (T/TH 11:00-12:15, BH/201)</option>
+        <option value="STAT353-42">STAT 353-42: Statistical Methods I for Engineers (M/W/F 2:00-2:50, CH/235)</option>
+        <option value="STAT360-40">STAT 360-40: Data Visualization (M/W/F 1:00-1:50, CH/13)</option>
+        <option value="STAT415-01">STAT 415-01: Data Mining (T/TH 12:30-1:45, CH/453)</option>
+      </select>
+    </div>
+    <div class="form-group"><label><i class="fas fa-book-open"></i> Course Title</label><input type="text" id="courseTitle" placeholder="e.g. STAT 353: Statistical Methods" value="STAT 353-41: Statistical Methods I for Engineers"></div>
+    <div class="form-group"><label><i class="fas fa-user-tie"></i> Instructor</label><input type="text" id="instructorName" placeholder="Dr. Shiju Zhang" value="Dr. Shiju Zhang"></div>
+    <div class="form-group"><label><i class="fas fa-calendar-day"></i> Days</label><input type="text" id="meetingDays" placeholder="T, H" value="T, H"></div>
+    <div class="form-group"><label><i class="fas fa-clock"></i> Times</label><input type="text" id="meetingTimes" placeholder="11:00 AM – 12:15 PM" value="11:00 AM – 12:15 PM"></div>
+    <div class="form-group"><label><i class="fas fa-door-open"></i> Classroom</label><input type="text" id="classroom" placeholder="BH/201" value="BH/201"></div>
     <div class="form-group"><label><i class="fas fa-clock"></i> Office Hours</label><input type="text" id="officeHours" placeholder="e.g. Wed 2-4 PM & by appointment" value="Wed 2–4 PM & by appointment"></div>
-    <div class="form-group"><label><i class="fas fa-info-circle"></i> Course Description</label><textarea id="courseDescription" rows="2">Welcome! This course is an introduction to the fundamental concepts and methods of statistics, including descriptive statistics, probability, sampling, estimation, hypothesis testing, and linear regression. We will explore how to collect, analyze, and interpret data to make informed decisions.</textarea></div>
-    <div class="form-group"><label><i class="fas fa-bullseye"></i> Learning Outcomes</label><textarea id="learningOutcomes" rows="2">By the end of this course, you will be able to:
-• Understand and apply basic statistical concepts and methods.
-• Analyze data using appropriate statistical techniques.
-• Interpret results in the context of real-world problems.
-• Use statistical software (R/RStudio) for data analysis and visualization.</textarea></div>
-    <div class="form-group"><label><i class="fas fa-percent"></i> Grading Scale</label><textarea id="gradingScale" rows="2">A: 93–100
-A-: 90–92
-B+: 87–89
-B: 83–86
-B-: 80–82
-C+: 77–79
-C: 73–76
-C-: 70–72
-D+: 67–69
-D: 63–66
-D-: 60–62
+
+    <!-- These fields will be auto-populated from catalog data -->
+    <div class="form-group full-width"><label><i class="fas fa-info-circle"></i> Course Description <span style="font-weight:normal; color:#555;">(from catalog)</span></label><textarea id="courseDescription" rows="2">Probability distributions; introduction to statistical methods, including hypothesis testing and confidence intervals, one-way anova, simple linear regression, quality control basics; applications, and the use of statistical software.</textarea></div>
+    <div class="form-group full-width"><label><i class="fas fa-bullseye"></i> Learning Outcomes <span style="font-weight:normal; color:#555;">(from catalog)</span></label><textarea id="learningOutcomes" rows="2">• Summarize data distributions using descriptive statistical methods.
+• Use appropriate probability distributions.
+• Choose an appropriate statistical method when analyzing engineering data.
+• Interpret the results of inferential statistics when analyzing engineering data.</textarea></div>
+    <div class="form-group"><label><i class="fas fa-percent"></i> Grading Scale</label><textarea id="gradingScale" rows="2">A: 90–100
+A-: 87–89
+B+: 84–86
+B: 80–83
+B-: 77–79
+C+: 74–76
+C: 71–73
+C-: 66–70
+D+: 63–65
+D: 60–62
 F: below 60</textarea></div>
-    <div class="form-group"><label><i class="fas fa-book"></i> Textbook</label><textarea id="textbook" rows="2">• Moore, D. S., Notz, W. I., & Fligner, M. A. (2022). The Basic Practice of Statistics (9th ed.). W.H. Freeman.
+    <div class="form-group"><label><i class="fas fa-book"></i> Textbook</label><textarea id="textbook" rows="2">• Montgomery, D. C., & Runger, G. C. (2019). Applied Statistics and Probability for Engineers (7th ed.). Wiley.
 • Access to statistical software (R/RStudio or Minitab).</textarea></div>
-    <div class="form-group"><label><i class="fas fa-link"></i> Lecture Notes / Other Links</label><textarea id="links" rows="2">• D2L: https://d2l.scsu.edu
+    <div class="form-group"><label><i class="fas fa-link"></i> Links</label><textarea id="links" rows="2">• D2L: https://d2l.scsu.edu
 • RStudio Cloud: https://rstudio.cloud
 • SCSU Library: https://library.stcloudstate.edu</textarea></div>
-    <div class="form-group full-width"><label><i class="fas fa-tasks"></i> Coursework (exams, projects, assignments, worksheets...)</label><textarea id="coursework" rows="2">• Homework (10%)
+    <div class="form-group full-width"><label><i class="fas fa-tasks"></i> Coursework</label><textarea id="coursework" rows="2">• Homework (15%)
 • Lab worksheets (15%)
 • Midterm Exam 1 (20%)
 • Midterm Exam 2 (20%)
 • Final Project (15%)
-• Final Exam (20%)</textarea></div>
-    <div class="form-group full-width"><label><i class="fas fa-calendar-alt"></i> Course Schedule (topics by week)</label><textarea id="courseSchedule" rows="4">Week 1: Introduction, data types, graphs
-Week 2: Descriptive statistics, measures of center and spread
-Week 3: Correlation and regression
-Week 4: Probability basics
-Week 5: Random variables and distributions
-Week 6: Sampling distributions
-Week 7: Confidence intervals
-Week 8: Hypothesis testing (one sample)
-Week 9: Hypothesis testing (two samples)
-Week 10: Chi-square tests
-Week 11: ANOVA
-Week 12: Final project presentations
-Week 13: Review
-Week 14: Final exam</textarea></div>
+• Final Exam (15%)</textarea></div>
+    <div class="form-group full-width"><label><i class="fas fa-calendar-alt"></i> Schedule (topics by week)</label><textarea id="courseSchedule" rows="4">Week 1: Introduction, Probability Distributions
+Week 2: Descriptive Statistics and Data Visualization
+Week 3: Sampling Distributions and Estimation
+Week 4: Confidence Intervals
+Week 5: Hypothesis Testing (One Sample)
+Week 6: Hypothesis Testing (Two Samples)
+Week 7: One-Way ANOVA
+Week 8: Simple Linear Regression
+Week 9: Multiple Regression
+Week 10: Model Building and Validation
+Week 11: Quality Control Basics
+Week 12: Applications with Statistical Software
+Week 13: Review and Project Work
+Week 14: Final Exam</textarea></div>
     <div class="form-group full-width" style="margin-top:0.2rem;">
       <div class="btn-group">
         <button class="btn btn-primary" id="previewBtn"><i class="fas fa-eye"></i> Refresh Syllabus</button>
@@ -365,14 +366,56 @@ Week 14: Final exam</textarea></div>
   <div class="syllabus-preview">
     <h2><i class="fas fa-scroll"></i> Syllabus Preview</h2>
     <div id="syllabusContent">
-      <!-- dynamic content will be injected here -->
+      <!-- dynamic content -->
     </div>
   </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
   (function() {
+    // ----- COURSE DATA FROM OFFICIAL CATALOG WITH CORRECT PREREQUISITES -----
+    const courseCatalog = {
+      'STAT353-41': {
+        title: 'STAT 353-41: Statistical Methods I for Engineers',
+        days: 'T, H',
+        times: '11:00 AM – 12:15 PM',
+        room: 'BH/201',
+        description: 'Probability distributions; introduction to statistical methods, including hypothesis testing and confidence intervals, one-way anova, simple linear regression, quality control basics; applications, and the use of statistical software.',
+        outcomes: '• Summarize data distributions using descriptive statistical methods.\n• Use appropriate probability distributions.\n• Choose an appropriate statistical method when analyzing engineering data.\n• Interpret the results of inferential statistics when analyzing engineering data.',
+        prereq: 'MATH 211 or MATH 221'
+      },
+      'STAT353-42': {
+        title: 'STAT 353-42: Statistical Methods I for Engineers',
+        days: 'M, W, F',
+        times: '2:00 – 2:50 PM',
+        room: 'CH/235',
+        description: 'Probability distributions; introduction to statistical methods, including hypothesis testing and confidence intervals, one-way anova, simple linear regression, quality control basics; applications, and the use of statistical software.',
+        outcomes: '• Summarize data distributions using descriptive statistical methods.\n• Use appropriate probability distributions.\n• Choose an appropriate statistical method when analyzing engineering data.\n• Interpret the results of inferential statistics when analyzing engineering data.',
+        prereq: 'MATH 211 or MATH 221'
+      },
+      'STAT360-40': {
+        title: 'STAT 360-40: Data Visualization',
+        days: 'M, W, F',
+        times: '1:00 – 1:50 PM',
+        room: 'CH/13',
+        description: 'Graphically explore a wide variety of data sets. Visual techniques to improve the understanding and communication of complex data. Hands-on implementation of these techniques with real data sets. Methods for visualizing large data sets, including high dimensional data. Dynamic data visualizations. Good design practices for visualization and presentation of results.',
+        outcomes: '• Explore large data sets graphically to better understand the data.\n• Choose and apply appropriate visualization techniques.\n• Create dynamic and static data visualizations using software.\n• Apply good design practices for effective communication of results.',
+        prereq: 'STAT 210'
+      },
+      'STAT415-01': {
+        title: 'STAT 415-01: Data Mining',
+        days: 'T, H',
+        times: '12:30 – 1:45 PM',
+        room: 'CH/453',
+        description: 'Data mining principles and applications. Predictive modeling techniques for large data sets including classification and regression trees, logistic regression, neural networks, random forests, and boosted trees. Handle missing values and outliers. Compare models and deploy best model to predict new data. Hands-on use of data mining software.',
+        outcomes: '• Explore large data sets graphically to better understand the data.\n• Describe data mining principles.\n• Choose and apply appropriate predictive modeling techniques.\n• Use data mining software.',
+        prereq: 'STAT 321'
+      }
+    };
+
+    // DOM references
+    const courseSelector = document.getElementById('courseSelector');
     const courseTitle = document.getElementById('courseTitle');
     const instructorName = document.getElementById('instructorName');
     const meetingDays = document.getElementById('meetingDays');
@@ -388,15 +431,35 @@ Week 14: Final exam</textarea></div>
     const courseSchedule = document.getElementById('courseSchedule');
     const syllabusContent = document.getElementById('syllabusContent');
 
-    // Helper: convert text to HTML with proper line breaks and bullet lists
+    // Populate fields when course is selected
+    courseSelector.addEventListener('change', function() {
+      const key = this.value;
+      if (key && courseCatalog[key]) {
+        const data = courseCatalog[key];
+        courseTitle.value = data.title;
+        meetingDays.value = data.days;
+        meetingTimes.value = data.times;
+        classroom.value = data.room;
+        courseDescription.value = data.description;
+        learningOutcomes.value = data.outcomes;
+        // Update schedule to be more course-specific
+        if (key.includes('STAT353')) {
+          courseSchedule.value = 'Week 1: Introduction, Probability Distributions\nWeek 2: Descriptive Statistics\nWeek 3: Sampling and Estimation\nWeek 4: Confidence Intervals\nWeek 5: Hypothesis Testing I\nWeek 6: Hypothesis Testing II\nWeek 7: One-Way ANOVA\nWeek 8: Simple Linear Regression\nWeek 9: Multiple Regression\nWeek 10: Model Building\nWeek 11: Quality Control Basics\nWeek 12: Software Applications\nWeek 13: Review\nWeek 14: Final Exam';
+        } else if (key.includes('STAT360')) {
+          courseSchedule.value = 'Week 1: Introduction to Data Visualization\nWeek 2: Data Exploration and Cleaning\nWeek 3: Static Visualizations (ggplot2)\nWeek 4: Advanced Static Visualizations\nWeek 5: Interactive Visualizations\nWeek 6: Dashboard Design\nWeek 7: Visualizing High-Dimensional Data\nWeek 8: Time Series Visualization\nWeek 9: Geospatial Visualization\nWeek 10: Storytelling with Data\nWeek 11: Design Principles\nWeek 12: Project Work\nWeek 13: Presentations\nWeek 14: Final Project Due';
+        } else if (key.includes('STAT415')) {
+          courseSchedule.value = 'Week 1: Introduction to Data Mining\nWeek 2: Data Preparation and Exploration\nWeek 3: Classification and Regression Trees\nWeek 4: Logistic Regression\nWeek 5: Neural Networks\nWeek 6: Random Forests\nWeek 7: Boosted Trees\nWeek 8: Model Evaluation and Selection\nWeek 9: Handling Missing Values\nWeek 10: Handling Outliers\nWeek 11: Model Deployment\nWeek 12: Advanced Topics\nWeek 13: Project Work\nWeek 14: Final Project Due';
+        }
+        updatePreview();
+      }
+    });
+
+    // Helper: format text with bullet lists
     function formatTextToHTML(text) {
       if (!text || text.trim() === '') return 'Not provided.';
-      
       const lines = text.split('\n').filter(line => line.trim() !== '');
       if (lines.length === 0) return 'Not provided.';
-      
       const hasBullet = lines.some(line => /^[\s]*[•\-*]/.test(line.trim()));
-      
       if (hasBullet) {
         return '<ul>' + lines.map(line => {
           const clean = line.replace(/^[\s]*[•\-*]\s*/, '').trim();
@@ -407,31 +470,25 @@ Week 14: Final exam</textarea></div>
       }
     }
 
-    // Format schedule as a table
+    // Format schedule as table
     function formatSchedule(text) {
       if (!text || text.trim() === '') return 'Not provided.';
       const lines = text.split('\n').filter(line => line.trim() !== '');
       if (lines.length === 0) return 'Not provided.';
-      
-      let tableHTML = `<table class="schedule-table">
-        <thead><tr><th>Week</th><th>Topics / Activities</th></tr></thead><tbody>`;
-      
+      let tableHTML = `<table class="schedule-table"><thead><tr><th>Week</th><th>Topics / Activities</th></tr></thead><tbody>`;
       lines.forEach(line => {
         const parts = line.split(':');
         if (parts.length >= 2) {
-          const week = parts[0].trim();
-          const topic = parts.slice(1).join(':').trim();
-          tableHTML += `<tr><td><strong>${week}</strong></td><td>${topic}</td></tr>`;
+          tableHTML += `<tr><td><strong>${parts[0].trim()}</strong></td><td>${parts.slice(1).join(':').trim()}</td></tr>`;
         } else {
           tableHTML += `<tr><td colspan="2">${line}</td></tr>`;
         }
       });
-      
       tableHTML += `</tbody></table>`;
       return tableHTML;
     }
 
-    // ----- build syllabus HTML -----
+    // ----- BUILD SYLLABUS -----
     function buildSyllabusHTML() {
       const title = courseTitle.value || 'Course Title';
       const instructor = instructorName.value || 'Instructor';
@@ -447,77 +504,71 @@ Week 14: Final exam</textarea></div>
       const linksText = links.value || 'No additional links provided.';
       const scheduleText = courseSchedule.value || '';
 
-      // ---- New welcoming message ----
+      // Get prereq from catalog
+      const selectedKey = courseSelector.value;
+      const prereq = courseCatalog[selectedKey]?.prereq || 'None';
+
+      // Welcome message
       const welcomeMessage = `<div class="statement-block" style="border-left-color: #0a2e4b; background: #eef5fa;">
         <strong>Welcome to ${title}!</strong>
-        <p>I am delighted to have you in this course. Together, we will explore the fascinating world of statistics. My goal is to create a supportive and engaging learning environment where everyone can succeed. I encourage you to ask questions, collaborate with your peers, and take an active role in your learning. I look forward to a great semester with you!</p>
+        <p>I am delighted to have you in this course. Together, we will explore essential statistical methods and their applications. My goal is to create a supportive learning environment where everyone can succeed. I encourage you to ask questions, collaborate, and engage actively. I look forward to a great semester!</p>
       </div>`;
 
-      // ---- SCSU policies ----
+      // SCSU Policies
       const attendancePolicy = `<div class="statement-block">
         <strong>Attendance Policy (SCSU 2.05):</strong>
-        <p>Regular attendance is expected and is essential for success in this course. St. Cloud State University requires students to attend classes to benefit from the educational experience. In accordance with SCSU Policy 2.05, absences for the following reasons will be accommodated when proper notice is provided:</p>
-        <ul>
-          <li>Funeral/bereavement of a close family member</li>
-          <li>Short-term impacts of ongoing medical issues (student or dependent)</li>
-          <li>Religious observances</li>
-          <li>University-sanctioned events (athletics, choir, band, theater, field trips, internships, etc.)</li>
-          <li>Required court appearances</li>
-        </ul>
-        <p><strong>Procedure:</strong> Students must provide written notice (email or D2L message) <em>prior</em> to the absence when possible. For emergencies, notify me as soon as circumstances allow. Make-up work arrangements must be made in writing. Instructors <strong>cannot</strong> require a doctor's note for one or two absences. For extended absences, contact the Dean of Students or Husky Assistance and Care Team (ACT).</p>
-        <p><em>See full policy: <a href="https://policies.stcloudstate.edu/SCSU/Viewer.aspx?id=129" target="_blank">SCSU 2.05 Short-Term Student Absence</a></em></p>
+        <p>Regular attendance is expected. Absences for bereavement, medical issues, religious observances, university-sanctioned events, and court appearances will be accommodated with proper notice. Provide written notice prior to absence when possible. Make-up work arrangements must be in writing. Instructors cannot require a doctor's note for one or two absences.</p>
+        <p><em>Full policy: <a href="https://policies.stcloudstate.edu/SCSU/Viewer.aspx?id=129" target="_blank">SCSU 2.05</a></em></p>
       </div>`;
 
       const aiStatement = `<div class="statement-block">
-        <strong>Artificial Intelligence (AI) Use – Encouraged, but with Responsibility:</strong>
-        <p>In this course, you are <strong>encouraged</strong> to explore and use AI tools (e.g., ChatGPT, Copilot, Grammarly) as learning aids for brainstorming, outlining, drafting, and refining your work. However, AI is a tool—not a replacement for your own critical thinking.</p>
+        <strong>Artificial Intelligence (AI) Use:</strong>
+        <p>You are <strong>encouraged</strong> to use AI tools (e.g., ChatGPT, Copilot) for brainstorming, debugging, and refining work. However, AI is not a replacement for your own critical thinking.</p>
         <ul>
-          <li><strong>Do:</strong> Use AI to generate ideas, check grammar, or summarize readings.</li>
-          <li><strong>Don't:</strong> Submit AI-generated content as your own original work without substantial revision and your own intellectual contribution.</li>
-          <li><strong>Always:</strong> Verify AI-generated information—AI can produce plausible but incorrect or biased content. You are responsible for the accuracy and integrity of every submission.</li>
+          <li><strong>Do:</strong> Use AI for idea generation, code assistance, and explanation.</li>
+          <li><strong>Don't:</strong> Submit AI-generated content as your own without substantial revision.</li>
+          <li><strong>Always:</strong> Verify AI output—you are responsible for accuracy.</li>
         </ul>
-        <p>Any assignment suspected of being submitted with minimal human input (i.e., copied directly from AI) will be subject to academic integrity review. When in doubt, ask me. <em>(Adapted from SCSU AI guidelines)</em></p>
+        <p><em>(Adapted from SCSU AI guidelines)</em></p>
       </div>`;
 
-      const accessibilityStatement = `<div class="statement-block"><strong>Accessibility & Student Support:</strong> This course is designed with accessibility in mind. If you encounter barriers, please reach out. Students with disabilities are encouraged to contact Student Accessibility Services (SAS) at 320-308-4080 or sas@stcloudstate.edu. <em>(SCSU SAS)</em></div>`;
+      const accessibilityStatement = `<div class="statement-block"><strong>Accessibility:</strong> This course is designed with accessibility in mind. Students with disabilities should contact Student Accessibility Services (SAS) at 320-308-4080 or sas@stcloudstate.edu.</div>`;
 
-      // ---- Additional sections from best practices ----
+      // Additional sections
       const studentResponsibilities = `<div class="statement-block">
-        <strong>Student Responsibilities and Academic Integrity:</strong>
+        <strong>Student Responsibilities:</strong>
         <ul>
-          <li><strong>Preparation:</strong> Come to class prepared, having read assigned materials and completed any preparatory work.</li>
-          <li><strong>Participation:</strong> Actively engage in class discussions, group work, and labs.</li>
-          <li><strong>Honesty:</strong> All work submitted must be your own. Plagiarism or cheating will result in disciplinary action as per SCSU's academic integrity policies.</li>
-          <li><strong>Communication:</strong> Check your university email and D2L regularly for announcements.</li>
-          <li><strong>Inclusivity:</strong> Respect diverse perspectives and contribute to a welcoming learning environment.</li>
+          <li><strong>Preparation:</strong> Come to class prepared, having completed readings and preparatory work.</li>
+          <li><strong>Participation:</strong> Engage actively in discussions, group work, and labs.</li>
+          <li><strong>Honesty:</strong> All work must be your own. Plagiarism will result in disciplinary action.</li>
+          <li><strong>Communication:</strong> Check your university email and D2L regularly.</li>
+          <li><strong>Inclusivity:</strong> Respect diverse perspectives and contribute to a welcoming environment.</li>
         </ul>
       </div>`;
 
       const gradingPolicy = `<div class="statement-block">
         <strong>Grading and Late Work Policy:</strong>
         <ul>
-          <li><strong>Homework:</strong> Due at the beginning of class on the assigned date. No late homework accepted without prior arrangement.</li>
-          <li><strong>Exams:</strong> Must be taken on the scheduled date. Make-up exams only for documented emergencies or university-sanctioned events.</li>
-          <li><strong>Final Project:</strong> Due on the last day of class. Late projects lose 10% per day.</li>
-          <li><strong>Incomplete (I) grade:</strong> Only considered for students who have completed most of the course work and have a documented emergency.</li>
-          <li><strong>Final grades:</strong> Based on the weighted components and the grading scale above.</li>
+          <li><strong>Homework:</strong> Due at beginning of class. No late homework without prior arrangement.</li>
+          <li><strong>Exams:</strong> Scheduled dates only. Make-up for documented emergencies only.</li>
+          <li><strong>Final Project:</strong> Due last day of class. Late projects lose 10% per day.</li>
+          <li><strong>Incomplete (I):</strong> Only for students who have completed most work with documented emergency.</li>
         </ul>
       </div>`;
 
-      // How to Succeed section
       const successTips = `<div class="statement-block" style="border-left-color: #1a7a3a; background: #f0f7f0;">
-        <strong>How to Succeed in This Course:</strong>
+        <strong>How to Succeed:</strong>
         <ul>
-          <li><strong>Attend regularly:</strong> Class sessions are designed to build on each other. Your presence matters.</li>
-          <li><strong>Do the reading:</strong> Come to class having completed the assigned readings. This will make lectures and discussions much more meaningful.</li>
-          <li><strong>Practice, practice, practice:</strong> Statistics is a skill. Work through problems, use the lab sessions, and don't be afraid to make mistakes—that's how we learn.</li>
-          <li><strong>Ask for help early:</strong> If you're struggling with a concept, reach out to me during office hours or use the tutoring resources available. The earlier you ask, the easier it is to get back on track.</li>
-          <li><strong>Collaborate with peers:</strong> Form study groups. Teaching others is one of the best ways to solidify your own understanding.</li>
-          <li><strong>Stay organized:</strong> Keep track of deadlines and use the course schedule to plan your semester.</li>
+          <li><strong>Attend regularly</strong> – class sessions build on each other.</li>
+          <li><strong>Do the reading</strong> – preparation makes lectures more meaningful.</li>
+          <li><strong>Practice</strong> – work through problems and use lab sessions.</li>
+          <li><strong>Ask for help early</strong> – use office hours and tutoring resources.</li>
+          <li><strong>Collaborate</strong> – form study groups to solidify understanding.</li>
+          <li><strong>Stay organized</strong> – use the schedule to plan your semester.</li>
         </ul>
       </div>`;
 
-      // format content
+      // Format content
       const outcomesHTML = formatTextToHTML(outcomes);
       const gradingHTML = formatTextToHTML(grading);
       const courseworkHTML = formatTextToHTML(work);
@@ -536,6 +587,7 @@ Week 14: Final exam</textarea></div>
           <strong>Meeting Times:</strong> <span>${times}</span>
           <strong>Classroom:</strong> <span>${room}</span>
           <strong>Office Hours:</strong> <span>${office}</span>
+          <strong>Prerequisites:</strong> <span>${prereq}</span>
         </div>
 
         ${welcomeMessage}
@@ -555,7 +607,7 @@ Week 14: Final exam</textarea></div>
         <h3><i class="fas fa-book" style="color:#c8102e;"></i> Textbook</h3>
         ${textbookHTML}
 
-        <h3><i class="fas fa-link" style="color:#c8102e;"></i> Lecture Notes / Other Links</h3>
+        <h3><i class="fas fa-link" style="color:#c8102e;"></i> Lecture Notes / Links</h3>
         ${linksHTML}
 
         <h3><i class="fas fa-calendar-alt" style="color:#c8102e;"></i> Course Schedule</h3>
@@ -570,26 +622,24 @@ Week 14: Final exam</textarea></div>
         ${successTips}
 
         <p style="margin-top:1.2rem; font-size:0.85rem; color:#4a5f73; border-top:1px solid #dee6f0; padding-top:0.8rem;">
-          <i class="fas fa-info-circle"></i> This syllabus incorporates sample statements from St. Cloud State University resources. 
-          For more information, visit <a href="https://services.stcloudstate.edu/TDClient/1919/Portal/KB/Article/152514" target="_blank">Syllabus Statement Samples</a> and 
-          <a href="https://services.stcloudstate.edu/TDClient/1919/Portal/KB/Article/146846" target="_blank">AI Use Statement</a>.
-          Additional structure adapted from <a href="https://mnstats.morris.umn.edu/introstat/syllabus1150.html" target="_blank">UMN Intro Statistics Syllabus</a> and best practices from Harvard, Illinois, WashU, and UTSA.
+          <i class="fas fa-info-circle"></i> Course data from <a href="https://catalog.stcloudstate.edu/" target="_blank">SCSU Catalog</a>.
+          Policies adapted from SCSU resources.
         </p>
       `;
     }
 
-    // update preview
+    // Update preview
     function updatePreview() {
       syllabusContent.innerHTML = buildSyllabusHTML();
     }
 
-    // initial render
+    // Initial render
     updatePreview();
 
-    // refresh button
+    // Refresh button
     document.getElementById('previewBtn').addEventListener('click', updatePreview);
 
-    // ---- download helpers ----
+    // ----- DOWNLOAD HELPERS -----
     function getFullSyllabusHTML() {
       const contentHTML = buildSyllabusHTML();
       return `<!DOCTYPE html>
@@ -618,7 +668,7 @@ ${contentHTML}
 </html>`;
     }
 
-    // download HTML
+    // Download HTML
     document.getElementById('downloadHtml').addEventListener('click', function() {
       const html = getFullSyllabusHTML();
       const blob = new Blob([html], { type: 'text/html' });
@@ -630,7 +680,7 @@ ${contentHTML}
       URL.revokeObjectURL(url);
     });
 
-    // download Word (.doc)
+    // Download Word
     document.getElementById('downloadWord').addEventListener('click', function() {
       const html = getFullSyllabusHTML();
       const blob = new Blob([html], { type: 'application/msword' });
@@ -642,20 +692,20 @@ ${contentHTML}
       URL.revokeObjectURL(url);
     });
 
-    // download PDF using html2pdf
+    // Download PDF
     document.getElementById('downloadPdf').addEventListener('click', function() {
       const content = syllabusContent;
       const opt = {
-        margin:        [0.75, 0.75, 0.75, 0.75],
-        filename:     'syllabus.pdf',
-        image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2, letterRendering: true, useCORS: true, logging: false },
-        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+        margin: [0.75, 0.75, 0.75, 0.75],
+        filename: 'syllabus.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, letterRendering: true, useCORS: true, logging: false },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
       };
       html2pdf().set(opt).from(content).save();
     });
 
-    // update on any input change
+    // Auto-update on any input change
     const inputs = document.querySelectorAll('#inputForm input, #inputForm textarea');
     inputs.forEach(inp => inp.addEventListener('input', updatePreview));
   })();
