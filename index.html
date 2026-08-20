@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCSU Syllabus Template</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: #f0f2f5;
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .container {
+      max-width: 1100px;
+      width: 100%;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+      padding: 2rem 2rem 2.5rem;
+    }
+    h1 {
+      font-weight: 600;
+      font-size: 2rem;
+      color: #0a2e4b;
+      border-left: 6px solid #c8102e;
+      padding-left: 1rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    h1 i {
+      color: #c8102e;
+      font-size: 1.8rem;
+    }
+    .subhead {
+      color: #2c3e50;
+      margin-bottom: 2rem;
+      font-weight: 400;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .subhead span {
+      background: #eef2f7;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      color: #1a3a5e;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem 2rem;
+      background: #f8fafc;
+      padding: 1.5rem 1.8rem;
+      border-radius: 20px;
+      margin-bottom: 2rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+    .form-group label {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #1e3a5f;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .form-group label i {
+      color: #c8102e;
+      width: 1.1rem;
+    }
+    .form-group input, .form-group textarea {
+      padding: 0.6rem 0.9rem;
+      border: 1px solid #d0d9e6;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      background: white;
+      transition: 0.2s;
+      font-family: inherit;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: #c8102e;
+      outline: 2px solid #c8102e30;
+      box-shadow: 0 0 0 3px #c8102e20;
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.2rem;
+      justify-content: flex-end;
+      margin-top: 0.5rem;
+    }
+    .btn {
+      background: white;
+      border: 1px solid #cbd5e1;
+      padding: 0.6rem 1.4rem;
+      border-radius: 60px;
+      font-weight: 500;
+      color: #1e293b;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .btn i {
+      font-size: 1rem;
+    }
+    .btn-primary {
+      background: #c8102e;
+      border-color: #c8102e;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #a00d25;
+      border-color: #a00d25;
+      box-shadow: 0 4px 10px rgba(200, 16, 46, 0.3);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #c8102e;
+      color: #c8102e;
+    }
+    .btn-outline:hover {
+      background: #c8102e10;
+    }
+    .btn-download {
+      background: #1a3a5e;
+      border-color: #1a3a5e;
+      color: white;
+    }
+    .btn-download:hover {
+      background: #0f2a44;
+      box-shadow: 0 4px 10px #1a3a5e40;
+    }
+    .syllabus-preview {
+      margin-top: 2rem;
+      border-top: 2px dashed #dce3ec;
+      padding-top: 1.8rem;
+    }
+    .syllabus-preview h2 {
+      font-size: 1.4rem;
+      color: #0a2e4b;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .syllabus-preview h2 i {
+      color: #c8102e;
+    }
+    #syllabusContent {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 2rem 2.2rem;
+      margin-top: 0.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: #1e2b3c;
+    }
+    #syllabusContent h3 {
+      color: #0a2e4b;
+      margin: 1.2rem 0 0.4rem;
+      font-weight: 600;
+      border-bottom: 1px solid #e9edf3;
+      padding-bottom: 0.3rem;
+    }
+    #syllabusContent .syllabus-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+    }
+    #syllabusContent .syllabus-header h2 {
+      margin: 0;
+      color: #c8102e;
+      font-weight: 600;
+      font-size: 1.8rem;
+    }
+    #syllabusContent .syllabus-header .scsu-badge {
+      background: #0a2e4b;
+      color: white;
+      padding: 0.2rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+    }
+    #syllabusContent .meta-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.1rem 1.5rem;
+      background: #f6f9fe;
+      padding: 0.8rem 1.5rem;
+      border-radius: 16px;
+      margin: 0.8rem 0 1.2rem;
+    }
+    #syllabusContent .meta-grid strong {
+      color: #1a3a5e;
+    }
+    #syllabusContent ul, #syllabusContent ol {
+      padding-left: 1.5rem;
+      margin: 0.5rem 0 0.8rem;
+    }
+    #syllabusContent li {
+      margin-bottom: 0.2rem;
+    }
+    #syllabusContent .statement-block {
+      background: #f8fafc;
+      border-left: 4px solid #c8102e;
+      padding: 0.8rem 1.5rem;
+      margin: 1rem 0;
+      border-radius: 0 12px 12px 0;
+    }
+    #syllabusContent .statement-block strong {
+      color: #0a2e4b;
+    }
+    #syllabusContent .statement-block ul {
+      margin: 0.3rem 0 0.3rem 1.2rem;
+    }
+    #syllabusContent .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.8rem 0 1rem;
+      font-size: 0.92rem;
+    }
+    #syllabusContent .schedule-table th {
+      background: #0a2e4b;
+      color: white;
+      padding: 0.5rem 0.8rem;
+      text-align: left;
+    }
+    #syllabusContent .schedule-table td {
+      padding: 0.4rem 0.8rem;
+      border-bottom: 1px solid #e9edf3;
+    }
+    #syllabusContent .schedule-table tr:nth-child(even) {
+      background: #f8fafc;
+    }
+    .footer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+    @media (max-width: 680px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+        padding: 1.2rem;
+      }
+      .container {
+        padding: 1.2rem;
+      }
+      #syllabusContent {
+        padding: 1.2rem;
+      }
+      #syllabusContent .meta-grid {
+        grid-template-columns: 1fr;
+        gap: 0.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container" id="appContainer">
+  <h1><i class="fas fa-pen-fancy"></i> Syllabus Builder · SCSU</h1>
+  <div class="subhead">
+    <span><i class="fas fa-university"></i> St. Cloud State University</span>
+    <span><i class="fas fa-file-alt"></i> Template v1.0</span>
+  </div>
+
+  <!-- INPUT FORM -->
+  <div class="form-grid" id="inputForm">
+    <div class="form-group"><label><i class="fas fa-book-open"></i> Course Title</label><input type="text" id="courseTitle" placeholder="e.g. STAT 1150: Intro to Statistics" value="STAT 1150: Introduction to Statistics"></div>
+    <div class="form-group"><label><i class="fas fa-user-tie"></i> Instructor Name</label><input type="text" id="instructorName" placeholder="Dr. Jane Smith" value="Dr. Jane Smith"></div>
+    <div class="form-group"><label><i class="fas fa-calendar-day"></i> Meeting Days</label><input type="text" id="meetingDays" placeholder="M, W, F" value="M, W, F"></div>
+    <div class="form-group"><label><i class="fas fa-clock"></i> Meeting Times</label><input type="text" id="meetingTimes" placeholder="10:00 – 10:50 AM" value="10:00 – 10:50 AM"></div>
+    <div class="form-group"><label><i class="fas fa-door-open"></i> Classroom</label><input type="text" id="classroom" placeholder="HHS 134" value="HHS 134"></div>
+    <div class="form-group"><label><i class="fas fa-clock"></i> Office Hours</label><input type="text" id="officeHours" placeholder="e.g. Wed 2-4 PM & by appointment" value="Wed 2–4 PM & by appointment"></div>
+    <div class="form-group"><label><i class="fas fa-info-circle"></i> Course Description</label><textarea id="courseDescription" rows="2">Welcome! This course is an introduction to the fundamental concepts and methods of statistics, including descriptive statistics, probability, sampling, estimation, hypothesis testing, and linear regression. We will explore how to collect, analyze, and interpret data to make informed decisions.</textarea></div>
+    <div class="form-group"><label><i class="fas fa-bullseye"></i> Learning Outcomes</label><textarea id="learningOutcomes" rows="2">By the end of this course, you will be able to:
+• Understand and apply basic statistical concepts and methods.
+• Analyze data using appropriate statistical techniques.
+• Interpret results in the context of real-world problems.
+• Use statistical software (R/RStudio) for data analysis and visualization.</textarea></div>
+    <div class="form-group"><label><i class="fas fa-percent"></i> Grading Scale</label><textarea id="gradingScale" rows="2">A: 93–100
+A-: 90–92
+B+: 87–89
+B: 83–86
+B-: 80–82
+C+: 77–79
+C: 73–76
+C-: 70–72
+D+: 67–69
+D: 63–66
+D-: 60–62
+F: below 60</textarea></div>
+    <div class="form-group"><label><i class="fas fa-book"></i> Textbook</label><textarea id="textbook" rows="2">• Moore, D. S., Notz, W. I., & Fligner, M. A. (2022). The Basic Practice of Statistics (9th ed.). W.H. Freeman.
+• Access to statistical software (R/RStudio or Minitab).</textarea></div>
+    <div class="form-group"><label><i class="fas fa-link"></i> Lecture Notes / Other Links</label><textarea id="links" rows="2">• D2L: https://d2l.scsu.edu
+• RStudio Cloud: https://rstudio.cloud
+• SCSU Library: https://library.stcloudstate.edu</textarea></div>
+    <div class="form-group full-width"><label><i class="fas fa-tasks"></i> Coursework (exams, projects, assignments, worksheets...)</label><textarea id="coursework" rows="2">• Homework (10%)
+• Lab worksheets (15%)
+• Midterm Exam 1 (20%)
+• Midterm Exam 2 (20%)
+• Final Project (15%)
+• Final Exam (20%)</textarea></div>
+    <div class="form-group full-width"><label><i class="fas fa-calendar-alt"></i> Course Schedule (topics by week)</label><textarea id="courseSchedule" rows="4">Week 1: Introduction, data types, graphs
+Week 2: Descriptive statistics, measures of center and spread
+Week 3: Correlation and regression
+Week 4: Probability basics
+Week 5: Random variables and distributions
+Week 6: Sampling distributions
+Week 7: Confidence intervals
+Week 8: Hypothesis testing (one sample)
+Week 9: Hypothesis testing (two samples)
+Week 10: Chi-square tests
+Week 11: ANOVA
+Week 12: Final project presentations
+Week 13: Review
+Week 14: Final exam</textarea></div>
+    <div class="form-group full-width" style="margin-top:0.2rem;">
+      <div class="btn-group">
+        <button class="btn btn-primary" id="previewBtn"><i class="fas fa-eye"></i> Refresh Syllabus</button>
+        <button class="btn btn-download" id="downloadHtml"><i class="fas fa-file-code"></i> HTML</button>
+        <button class="btn btn-download" id="downloadWord"><i class="fas fa-file-word"></i> Word</button>
+        <button class="btn btn-download" id="downloadPdf"><i class="fas fa-file-pdf"></i> PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SYLLABUS PREVIEW -->
+  <div class="syllabus-preview">
+    <h2><i class="fas fa-scroll"></i> Syllabus Preview</h2>
+    <div id="syllabusContent">
+      <!-- dynamic content will be injected here -->
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  (function() {
+    const courseTitle = document.getElementById('courseTitle');
+    const instructorName = document.getElementById('instructorName');
+    const meetingDays = document.getElementById('meetingDays');
+    const meetingTimes = document.getElementById('meetingTimes');
+    const classroom = document.getElementById('classroom');
+    const officeHours = document.getElementById('officeHours');
+    const courseDescription = document.getElementById('courseDescription');
+    const learningOutcomes = document.getElementById('learningOutcomes');
+    const gradingScale = document.getElementById('gradingScale');
+    const coursework = document.getElementById('coursework');
+    const textbook = document.getElementById('textbook');
+    const links = document.getElementById('links');
+    const courseSchedule = document.getElementById('courseSchedule');
+    const syllabusContent = document.getElementById('syllabusContent');
+
+    // Helper: convert text to HTML with proper line breaks and bullet lists
+    function formatTextToHTML(text) {
+      if (!text || text.trim() === '') return 'Not provided.';
+      
+      const lines = text.split('\n').filter(line => line.trim() !== '');
+      if (lines.length === 0) return 'Not provided.';
+      
+      const hasBullet = lines.some(line => /^[\s]*[•\-*]/.test(line.trim()));
+      
+      if (hasBullet) {
+        return '<ul>' + lines.map(line => {
+          const clean = line.replace(/^[\s]*[•\-*]\s*/, '').trim();
+          return `<li>${clean}</li>`;
+        }).join('') + '</ul>';
+      } else {
+        return lines.join('<br>');
+      }
+    }
+
+    // Format schedule as a table
+    function formatSchedule(text) {
+      if (!text || text.trim() === '') return 'Not provided.';
+      const lines = text.split('\n').filter(line => line.trim() !== '');
+      if (lines.length === 0) return 'Not provided.';
+      
+      let tableHTML = `<table class="schedule-table">
+        <thead><tr><th>Week</th><th>Topics / Activities</th></tr></thead><tbody>`;
+      
+      lines.forEach(line => {
+        const parts = line.split(':');
+        if (parts.length >= 2) {
+          const week = parts[0].trim();
+          const topic = parts.slice(1).join(':').trim();
+          tableHTML += `<tr><td><strong>${week}</strong></td><td>${topic}</td></tr>`;
+        } else {
+          tableHTML += `<tr><td colspan="2">${line}</td></tr>`;
+        }
+      });
+      
+      tableHTML += `</tbody></table>`;
+      return tableHTML;
+    }
+
+    // ----- build syllabus HTML -----
+    function buildSyllabusHTML() {
+      const title = courseTitle.value || 'Course Title';
+      const instructor = instructorName.value || 'Instructor';
+      const days = meetingDays.value || 'TBD';
+      const times = meetingTimes.value || 'TBD';
+      const room = classroom.value || 'TBD';
+      const office = officeHours.value || 'TBD';
+      const desc = courseDescription.value || 'Course description not provided.';
+      const outcomes = learningOutcomes.value || 'Learning outcomes not listed.';
+      const grading = gradingScale.value || 'Grading scale not provided.';
+      const work = coursework.value || 'Coursework details not provided.';
+      const textbookText = textbook.value || 'No textbook required.';
+      const linksText = links.value || 'No additional links provided.';
+      const scheduleText = courseSchedule.value || '';
+
+      // ---- New welcoming message ----
+      const welcomeMessage = `<div class="statement-block" style="border-left-color: #0a2e4b; background: #eef5fa;">
+        <strong>Welcome to ${title}!</strong>
+        <p>I am delighted to have you in this course. Together, we will explore the fascinating world of statistics. My goal is to create a supportive and engaging learning environment where everyone can succeed. I encourage you to ask questions, collaborate with your peers, and take an active role in your learning. I look forward to a great semester with you!</p>
+      </div>`;
+
+      // ---- SCSU policies ----
+      const attendancePolicy = `<div class="statement-block">
+        <strong>Attendance Policy (SCSU 2.05):</strong>
+        <p>Regular attendance is expected and is essential for success in this course. St. Cloud State University requires students to attend classes to benefit from the educational experience. In accordance with SCSU Policy 2.05, absences for the following reasons will be accommodated when proper notice is provided:</p>
+        <ul>
+          <li>Funeral/bereavement of a close family member</li>
+          <li>Short-term impacts of ongoing medical issues (student or dependent)</li>
+          <li>Religious observances</li>
+          <li>University-sanctioned events (athletics, choir, band, theater, field trips, internships, etc.)</li>
+          <li>Required court appearances</li>
+        </ul>
+        <p><strong>Procedure:</strong> Students must provide written notice (email or D2L message) <em>prior</em> to the absence when possible. For emergencies, notify me as soon as circumstances allow. Make-up work arrangements must be made in writing. Instructors <strong>cannot</strong> require a doctor's note for one or two absences. For extended absences, contact the Dean of Students or Husky Assistance and Care Team (ACT).</p>
+        <p><em>See full policy: <a href="https://policies.stcloudstate.edu/SCSU/Viewer.aspx?id=129" target="_blank">SCSU 2.05 Short-Term Student Absence</a></em></p>
+      </div>`;
+
+      const aiStatement = `<div class="statement-block">
+        <strong>Artificial Intelligence (AI) Use – Encouraged, but with Responsibility:</strong>
+        <p>In this course, you are <strong>encouraged</strong> to explore and use AI tools (e.g., ChatGPT, Copilot, Grammarly) as learning aids for brainstorming, outlining, drafting, and refining your work. However, AI is a tool—not a replacement for your own critical thinking.</p>
+        <ul>
+          <li><strong>Do:</strong> Use AI to generate ideas, check grammar, or summarize readings.</li>
+          <li><strong>Don't:</strong> Submit AI-generated content as your own original work without substantial revision and your own intellectual contribution.</li>
+          <li><strong>Always:</strong> Verify AI-generated information—AI can produce plausible but incorrect or biased content. You are responsible for the accuracy and integrity of every submission.</li>
+        </ul>
+        <p>Any assignment suspected of being submitted with minimal human input (i.e., copied directly from AI) will be subject to academic integrity review. When in doubt, ask me. <em>(Adapted from SCSU AI guidelines)</em></p>
+      </div>`;
+
+      const accessibilityStatement = `<div class="statement-block"><strong>Accessibility & Student Support:</strong> This course is designed with accessibility in mind. If you encounter barriers, please reach out. Students with disabilities are encouraged to contact Student Accessibility Services (SAS) at 320-308-4080 or sas@stcloudstate.edu. <em>(SCSU SAS)</em></div>`;
+
+      // ---- Additional sections from best practices ----
+      const studentResponsibilities = `<div class="statement-block">
+        <strong>Student Responsibilities and Academic Integrity:</strong>
+        <ul>
+          <li><strong>Preparation:</strong> Come to class prepared, having read assigned materials and completed any preparatory work.</li>
+          <li><strong>Participation:</strong> Actively engage in class discussions, group work, and labs.</li>
+          <li><strong>Honesty:</strong> All work submitted must be your own. Plagiarism or cheating will result in disciplinary action as per SCSU's academic integrity policies.</li>
+          <li><strong>Communication:</strong> Check your university email and D2L regularly for announcements.</li>
+          <li><strong>Inclusivity:</strong> Respect diverse perspectives and contribute to a welcoming learning environment.</li>
+        </ul>
+      </div>`;
+
+      const gradingPolicy = `<div class="statement-block">
+        <strong>Grading and Late Work Policy:</strong>
+        <ul>
+          <li><strong>Homework:</strong> Due at the beginning of class on the assigned date. No late homework accepted without prior arrangement.</li>
+          <li><strong>Exams:</strong> Must be taken on the scheduled date. Make-up exams only for documented emergencies or university-sanctioned events.</li>
+          <li><strong>Final Project:</strong> Due on the last day of class. Late projects lose 10% per day.</li>
+          <li><strong>Incomplete (I) grade:</strong> Only considered for students who have completed most of the course work and have a documented emergency.</li>
+          <li><strong>Final grades:</strong> Based on the weighted components and the grading scale above.</li>
+        </ul>
+      </div>`;
+
+      // How to Succeed section
+      const successTips = `<div class="statement-block" style="border-left-color: #1a7a3a; background: #f0f7f0;">
+        <strong>How to Succeed in This Course:</strong>
+        <ul>
+          <li><strong>Attend regularly:</strong> Class sessions are designed to build on each other. Your presence matters.</li>
+          <li><strong>Do the reading:</strong> Come to class having completed the assigned readings. This will make lectures and discussions much more meaningful.</li>
+          <li><strong>Practice, practice, practice:</strong> Statistics is a skill. Work through problems, use the lab sessions, and don't be afraid to make mistakes—that's how we learn.</li>
+          <li><strong>Ask for help early:</strong> If you're struggling with a concept, reach out to me during office hours or use the tutoring resources available. The earlier you ask, the easier it is to get back on track.</li>
+          <li><strong>Collaborate with peers:</strong> Form study groups. Teaching others is one of the best ways to solidify your own understanding.</li>
+          <li><strong>Stay organized:</strong> Keep track of deadlines and use the course schedule to plan your semester.</li>
+        </ul>
+      </div>`;
+
+      // format content
+      const outcomesHTML = formatTextToHTML(outcomes);
+      const gradingHTML = formatTextToHTML(grading);
+      const courseworkHTML = formatTextToHTML(work);
+      const textbookHTML = formatTextToHTML(textbookText);
+      const linksHTML = formatTextToHTML(linksText);
+      const scheduleHTML = formatSchedule(scheduleText);
+
+      return `
+        <div class="syllabus-header">
+          <h2>${title}</h2>
+          <span class="scsu-badge"><i class="fas fa-university"></i> SCSU</span>
+        </div>
+        <div class="meta-grid">
+          <strong>Instructor:</strong> <span>${instructor}</span>
+          <strong>Meeting Days:</strong> <span>${days}</span>
+          <strong>Meeting Times:</strong> <span>${times}</span>
+          <strong>Classroom:</strong> <span>${room}</span>
+          <strong>Office Hours:</strong> <span>${office}</span>
+        </div>
+
+        ${welcomeMessage}
+
+        <h3><i class="fas fa-align-left" style="color:#c8102e;"></i> Course Description</h3>
+        <p>${desc}</p>
+
+        <h3><i class="fas fa-check-circle" style="color:#c8102e;"></i> Learning Outcomes</h3>
+        ${outcomesHTML}
+
+        <h3><i class="fas fa-weight-hanging" style="color:#c8102e;"></i> Grading Scale</h3>
+        ${gradingHTML}
+
+        <h3><i class="fas fa-pencil-alt" style="color:#c8102e;"></i> Coursework</h3>
+        ${courseworkHTML}
+
+        <h3><i class="fas fa-book" style="color:#c8102e;"></i> Textbook</h3>
+        ${textbookHTML}
+
+        <h3><i class="fas fa-link" style="color:#c8102e;"></i> Lecture Notes / Other Links</h3>
+        ${linksHTML}
+
+        <h3><i class="fas fa-calendar-alt" style="color:#c8102e;"></i> Course Schedule</h3>
+        ${scheduleHTML}
+
+        <h3><i class="fas fa-gavel" style="color:#c8102e;"></i> University Policies & Statements</h3>
+        ${attendancePolicy}
+        ${aiStatement}
+        ${accessibilityStatement}
+        ${studentResponsibilities}
+        ${gradingPolicy}
+        ${successTips}
+
+        <p style="margin-top:1.2rem; font-size:0.85rem; color:#4a5f73; border-top:1px solid #dee6f0; padding-top:0.8rem;">
+          <i class="fas fa-info-circle"></i> This syllabus incorporates sample statements from St. Cloud State University resources. 
+          For more information, visit <a href="https://services.stcloudstate.edu/TDClient/1919/Portal/KB/Article/152514" target="_blank">Syllabus Statement Samples</a> and 
+          <a href="https://services.stcloudstate.edu/TDClient/1919/Portal/KB/Article/146846" target="_blank">AI Use Statement</a>.
+          Additional structure adapted from <a href="https://mnstats.morris.umn.edu/introstat/syllabus1150.html" target="_blank">UMN Intro Statistics Syllabus</a> and best practices from Harvard, Illinois, WashU, and UTSA.
+        </p>
+      `;
+    }
+
+    // update preview
+    function updatePreview() {
+      syllabusContent.innerHTML = buildSyllabusHTML();
+    }
+
+    // initial render
+    updatePreview();
+
+    // refresh button
+    document.getElementById('previewBtn').addEventListener('click', updatePreview);
+
+    // ---- download helpers ----
+    function getFullSyllabusHTML() {
+      const contentHTML = buildSyllabusHTML();
+      return `<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Syllabus</title>
+<style>
+  body { font-family: 'Segoe UI', Roboto, sans-serif; max-width: 1000px; margin: 2rem auto; padding: 1.5rem; line-height:1.6; }
+  .syllabus-header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
+  .syllabus-header h2 { color:#c8102e; }
+  .scsu-badge { background:#0a2e4b; color:white; padding:0.2rem 1.2rem; border-radius:40px; font-size:0.8rem; }
+  .meta-grid { display:grid; grid-template-columns:auto 1fr; gap:0.1rem 1.5rem; background:#f6f9fe; padding:0.8rem 1.5rem; border-radius:16px; margin:0.8rem 0 1.2rem; }
+  .statement-block { background:#f8fafc; border-left:4px solid #c8102e; padding:0.8rem 1.5rem; margin:1rem 0; border-radius:0 12px 12px 0; }
+  .statement-block ul { margin:0.3rem 0 0.3rem 1.2rem; }
+  h3 { color:#0a2e4b; margin:1.2rem 0 0.4rem; border-bottom:1px solid #e9edf3; padding-bottom:0.3rem; }
+  ul { padding-left:1.5rem; }
+  li { margin-bottom:0.2rem; }
+  .schedule-table { width:100%; border-collapse:collapse; margin:0.8rem 0 1rem; font-size:0.92rem; }
+  .schedule-table th { background:#0a2e4b; color:white; padding:0.5rem 0.8rem; text-align:left; }
+  .schedule-table td { padding:0.4rem 0.8rem; border-bottom:1px solid #e9edf3; }
+  .schedule-table tr:nth-child(even) { background:#f8fafc; }
+</style>
+</head>
+<body>
+${contentHTML}
+</body>
+</html>`;
+    }
+
+    // download HTML
+    document.getElementById('downloadHtml').addEventListener('click', function() {
+      const html = getFullSyllabusHTML();
+      const blob = new Blob([html], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'syllabus.html';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    // download Word (.doc)
+    document.getElementById('downloadWord').addEventListener('click', function() {
+      const html = getFullSyllabusHTML();
+      const blob = new Blob([html], { type: 'application/msword' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'syllabus.doc';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    // download PDF using html2pdf
+    document.getElementById('downloadPdf').addEventListener('click', function() {
+      const content = syllabusContent;
+      const opt = {
+        margin:        [0.75, 0.75, 0.75, 0.75],
+        filename:     'syllabus.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2, letterRendering: true, useCORS: true, logging: false },
+        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+      };
+      html2pdf().set(opt).from(content).save();
+    });
+
+    // update on any input change
+    const inputs = document.querySelectorAll('#inputForm input, #inputForm textarea');
+    inputs.forEach(inp => inp.addEventListener('input', updatePreview));
+  })();
+</script>
+</body>
+</html>
