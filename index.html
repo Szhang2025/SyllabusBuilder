@@ -3,16 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SCSU Syllabus Generator - Dr. Shiju Zhang</title>
-  <!-- Font Awesome for icons -->
+  <title>SCSU Syllabus Generator · Dr. Shiju Zhang</title>
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* --- Base & Layout --- */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       background: #f0f2f5;
       font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
@@ -40,10 +35,7 @@
       align-items: center;
       gap: 0.75rem;
     }
-    h1 i {
-      color: #c8102e;
-      font-size: 1.8rem;
-    }
+    h1 i { color: #c8102e; font-size: 1.8rem; }
     .subhead {
       color: #2c3e50;
       margin-bottom: 2rem;
@@ -62,8 +54,6 @@
       font-size: 0.9rem;
       color: #1a3a5e;
     }
-
-    /* --- Form --- */
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -73,14 +63,8 @@
       border-radius: 20px;
       margin-bottom: 2rem;
     }
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-    }
-    .form-group.full-width {
-      grid-column: 1 / -1;
-    }
+    .form-group { display: flex; flex-direction: column; gap: 0.2rem; }
+    .form-group.full-width { grid-column: 1 / -1; }
     .form-group label {
       font-weight: 600;
       font-size: 0.85rem;
@@ -90,10 +74,7 @@
       align-items: center;
       gap: 6px;
     }
-    .form-group label i {
-      color: #c8102e;
-      width: 1.1rem;
-    }
+    .form-group label i { color: #c8102e; width: 1.1rem; }
     .form-group input, .form-group textarea, .form-group select {
       padding: 0.6rem 0.9rem;
       border: 1px solid #d0d9e6;
@@ -108,12 +89,6 @@
       outline: 2px solid #c8102e30;
       box-shadow: 0 0 0 3px #c8102e20;
     }
-    .form-group textarea {
-      resize: vertical;
-      min-height: 70px;
-    }
-
-    /* --- Buttons --- */
     .btn-group {
       display: flex;
       flex-wrap: wrap;
@@ -136,9 +111,7 @@
       font-size: 0.95rem;
       box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
-    .btn i {
-      font-size: 1rem;
-    }
+    .btn i { font-size: 1rem; }
     .btn-primary {
       background: #c8102e;
       border-color: #c8102e;
@@ -158,8 +131,6 @@
       background: #0f2a44;
       box-shadow: 0 4px 10px #1a3a5e40;
     }
-
-    /* --- Syllabus Preview --- */
     .syllabus-preview {
       margin-top: 2rem;
       border-top: 2px dashed #dce3ec;
@@ -173,9 +144,7 @@
       align-items: center;
       gap: 10px;
     }
-    .syllabus-preview h2 i {
-      color: #c8102e;
-    }
+    .syllabus-preview h2 i { color: #c8102e; }
     #syllabusContent {
       background: #ffffff;
       border: 1px solid #e2e8f0;
@@ -224,16 +193,9 @@
       border-radius: 16px;
       margin: 0.8rem 0 1.2rem;
     }
-    #syllabusContent .meta-grid strong {
-      color: #1a3a5e;
-    }
-    #syllabusContent ul, #syllabusContent ol {
-      padding-left: 1.5rem;
-      margin: 0.5rem 0 0.8rem;
-    }
-    #syllabusContent li {
-      margin-bottom: 0.2rem;
-    }
+    #syllabusContent .meta-grid strong { color: #1a3a5e; }
+    #syllabusContent ul, #syllabusContent ol { padding-left: 1.5rem; margin: 0.5rem 0 0.8rem; }
+    #syllabusContent li { margin-bottom: 0.2rem; }
     #syllabusContent .statement-block {
       background: #f8fafc;
       border-left: 4px solid #c8102e;
@@ -241,12 +203,8 @@
       margin: 1rem 0;
       border-radius: 0 12px 12px 0;
     }
-    #syllabusContent .statement-block strong {
-      color: #0a2e4b;
-    }
-    #syllabusContent .statement-block ul {
-      margin: 0.3rem 0 0.3rem 1.2rem;
-    }
+    #syllabusContent .statement-block strong { color: #0a2e4b; }
+    #syllabusContent .statement-block ul { margin: 0.3rem 0 0.3rem 1.2rem; }
     #syllabusContent .schedule-table {
       width: 100%;
       border-collapse: collapse;
@@ -263,24 +221,12 @@
       padding: 0.4rem 0.8rem;
       border-bottom: 1px solid #e9edf3;
     }
-    #syllabusContent .schedule-table tr:nth-child(even) {
-      background: #f8fafc;
-    }
+    #syllabusContent .schedule-table tr:nth-child(even) { background: #f8fafc; }
     @media (max-width: 680px) {
-      .form-grid {
-        grid-template-columns: 1fr;
-        padding: 1.2rem;
-      }
-      .container {
-        padding: 1.2rem;
-      }
-      #syllabusContent {
-        padding: 1.2rem;
-      }
-      #syllabusContent .meta-grid {
-        grid-template-columns: 1fr;
-        gap: 0.2rem;
-      }
+      .form-grid { grid-template-columns: 1fr; padding: 1.2rem; }
+      .container { padding: 1.2rem; }
+      #syllabusContent { padding: 1.2rem; }
+      #syllabusContent .meta-grid { grid-template-columns: 1fr; gap: 0.2rem; }
     }
   </style>
 </head>
@@ -289,7 +235,7 @@
   <h1><i class="fas fa-pen-fancy"></i> Syllabus Builder · SCSU</h1>
   <div class="subhead">
     <span><i class="fas fa-user-graduate"></i> Dr. Shiju Zhang</span>
-    <span><i class="fas fa-file-alt"></i> Official Catalog Data</span>
+    <span><i class="fas fa-file-alt"></i> Official Catalog + Lecture Notes</span>
   </div>
 
   <!-- INPUT FORM -->
@@ -310,7 +256,6 @@
     <div class="form-group"><label><i class="fas fa-door-open"></i> Classroom</label><input type="text" id="classroom" placeholder="BH/201" value="BH/201"></div>
     <div class="form-group"><label><i class="fas fa-clock"></i> Office Hours</label><input type="text" id="officeHours" placeholder="e.g. Wed 2-4 PM & by appointment" value="M-F 9:30-10:30 AM, 3:30-4:30 PM in CH366AD & by appointment"></div>
 
-    <!-- These fields will be auto-populated from catalog data -->
     <div class="form-group full-width"><label><i class="fas fa-info-circle"></i> Course Description <span style="font-weight:normal; color:#555;">(from catalog)</span></label><textarea id="courseDescription" rows="2">Probability distributions; introduction to statistical methods, including hypothesis testing and confidence intervals, one-way anova, simple linear regression, quality control basics; applications, and the use of statistical software.</textarea></div>
     <div class="form-group full-width"><label><i class="fas fa-bullseye"></i> Learning Outcomes <span style="font-weight:normal; color:#555;">(from catalog)</span></label><textarea id="learningOutcomes" rows="2">• Summarize data distributions using descriptive statistical methods.
 • Use appropriate probability distributions.
@@ -329,29 +274,35 @@ D: 60–62
 F: below 60</textarea></div>
     <div class="form-group"><label><i class="fas fa-book"></i> Textbook</label><textarea id="textbook" rows="2">• Montgomery, D. C., & Runger, G. C. (2019). Applied Statistics and Probability for Engineers (7th ed.). Wiley.
 • Access to statistical software (R/RStudio or Minitab).</textarea></div>
-    <div class="form-group"><label><i class="fas fa-link"></i> Links</label><textarea id="links" rows="2">• D2L: https://d2l.scsu.edu
+    <div class="form-group"><label><i class="fas fa-link"></i> Links / Lecture Notes</label><textarea id="links" rows="3">• D2L: https://d2l.scsu.edu
 • RStudio Cloud: https://rstudio.cloud
+• STAT 353 lecture notes: https://rpubs.com/scsustat/stat353
+• STAT 415 lecture notes: https://szhang2025.github.io/DMLectureNotes/
+• STAT 415 additional: https://szhang2025.github.io/NovelOnML/
 </textarea></div>
-    <div class="form-group full-width"><label><i class="fas fa-tasks"></i> Coursework</label><textarea id="coursework" rows="2">
-• Class Quizzes (10%)
+    <div class="form-group full-width"><label><i class="fas fa-tasks"></i> Coursework</label><textarea id="coursework" rows="4">• Weekly/Topic Quizzes and Practice (10%)
 • Midterm Exam 1 (20%)
 • Midterm Exam 2 (20%)
-• Three (3) Project (30%)
-• Final Exam (20%)</textarea></div>
-    <div class="form-group full-width"><label><i class="fas fa-calendar-alt"></i> Schedule (topics by week)</label><textarea id="courseSchedule" rows="4">Week 1: Introduction, Probability Distributions
-Week 2: Descriptive Statistics and Data Visualization
-Week 3: Sampling Distributions and Estimation
-Week 4: Confidence Intervals
-Week 5: Hypothesis Testing (One Sample)
-Week 6: Hypothesis Testing (Two Samples)
-Week 7: One-Way ANOVA
-Week 8: Simple Linear Regression
-Week 9: Multiple Regression
-Week 10: Model Building and Validation
-Week 11: Quality Control Basics
-Week 12: Applications with Statistical Software
-Week 13: Review and Project Work
-Week 14: Final Exam</textarea></div>
+• Projects / Applied Assignments (30%)
+• Final Exam / Final Project (20%)
+
+Due dates are automatically placed in the appropriate weeks of the course schedule.</textarea></div>
+    <div class="form-group full-width"><label><i class="fas fa-calendar-alt"></i> Schedule (topics by week) <span style="font-weight:normal; color:#555;">(auto-populated from course resources)</span></label><textarea id="courseSchedule" rows="6">Week 1: Course Introduction; Experiment, Sample Space, Events & Counting Methods
+Week 2: Probability, Conditional Probability, Independence & Bayes' Formula
+Week 3: Discrete Random Variables: pmf, Mean, SD, Binomial, Geometric & Poisson
+Week 4: Continuous Random Variables: Mean, SD, Uniform, Normal & Exponential
+Week 5: Joint Distributions, Covariance & Correlation
+Week 6: Population & Sample, Descriptive Statistics & Charts
+Week 7: Sampling Distribution, Bias & Standard Error
+Week 8: Confidence Interval & Hypothesis Testing for a Single Proportion
+Week 9: CI & Hypothesis Testing for the Difference Between Two Proportions
+Week 10: CI & Hypothesis Testing for a Single Population Mean
+Week 11: CI & Hypothesis Testing for the Difference Between Two Population Means
+Week 12: Chi-Square Tests: Goodness of Fit, Homogeneity & Independence
+Week 13: One-Way ANOVA and Multiple Testing
+Week 14: Simple & Multiple Linear Regression
+Week 15: Control Charts: x̄, R & p Chart; Comprehensive Review
+Week 16: Final Exam</textarea></div>
     <div class="form-group full-width" style="margin-top:0.2rem;">
       <div class="btn-group">
         <button class="btn btn-primary" id="previewBtn"><i class="fas fa-eye"></i> Refresh Syllabus</button>
@@ -374,7 +325,7 @@ Week 14: Final Exam</textarea></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
   (function() {
-    // ----- COURSE DATA FROM OFFICIAL CATALOG WITH CORRECT PREREQUISITES -----
+    // ----- COURSE DATA FROM OFFICIAL CATALOG + LECTURE NOTES -----
     const courseCatalog = {
       'STAT353-41': {
         title: 'STAT 353-41: Statistical Methods I for Engineers',
@@ -383,7 +334,9 @@ Week 14: Final Exam</textarea></div>
         room: 'BH/201',
         description: 'Probability distributions; introduction to statistical methods, including hypothesis testing and confidence intervals, one-way anova, simple linear regression, quality control basics; applications, and the use of statistical software.',
         outcomes: '• Summarize data distributions using descriptive statistical methods.\n• Use appropriate probability distributions.\n• Choose an appropriate statistical method when analyzing engineering data.\n• Interpret the results of inferential statistics when analyzing engineering data.',
-        prereq: 'MATH 211 or MATH 221'
+        prereq: 'MATH 211 or MATH 221',
+        resource: 'https://szhang2025.github.io/Stat353Team/',
+        lectureNotes: 'https://rpubs.com/scsustat/stat353'
       },
       'STAT353-42': {
         title: 'STAT 353-42: Statistical Methods I for Engineers',
@@ -392,7 +345,8 @@ Week 14: Final Exam</textarea></div>
         room: 'CH/235',
         description: 'Probability distributions; introduction to statistical methods, including hypothesis testing and confidence intervals, one-way anova, simple linear regression, quality control basics; applications, and the use of statistical software.',
         outcomes: '• Summarize data distributions using descriptive statistical methods.\n• Use appropriate probability distributions.\n• Choose an appropriate statistical method when analyzing engineering data.\n• Interpret the results of inferential statistics when analyzing engineering data.',
-        prereq: 'MATH 211 or MATH 221'
+        prereq: 'MATH 211 or MATH 221',
+        lectureNotes: 'https://rpubs.com/scsustat/stat353'
       },
       'STAT360-40': {
         title: 'STAT 360-40: Data Visualization',
@@ -401,7 +355,9 @@ Week 14: Final Exam</textarea></div>
         room: 'CH/13',
         description: 'Graphically explore a wide variety of data sets. Visual techniques to improve the understanding and communication of complex data. Hands-on implementation of these techniques with real data sets. Methods for visualizing large data sets, including high dimensional data. Dynamic data visualizations. Good design practices for visualization and presentation of results.',
         outcomes: '• Explore large data sets graphically to better understand the data.\n• Choose and apply appropriate visualization techniques.\n• Create dynamic and static data visualizations using software.\n• Apply good design practices for effective communication of results.',
-        prereq: 'STAT 210'
+        prereq: 'STAT 210',
+        resource: 'https://szhang2025.github.io/DataVisualizationBook/',
+        lectureNotes: 'https://szhang2025.github.io/DataVisualizationBook/'
       },
       'STAT415-01': {
         title: 'STAT 415-01: Data Mining',
@@ -410,11 +366,13 @@ Week 14: Final Exam</textarea></div>
         room: 'CH/453',
         description: 'Data mining principles and applications. Predictive modeling techniques for large data sets including classification and regression trees, logistic regression, neural networks, random forests, and boosted trees. Handle missing values and outliers. Compare models and deploy best model to predict new data. Hands-on use of data mining software.',
         outcomes: '• Explore large data sets graphically to better understand the data.\n• Describe data mining principles.\n• Choose and apply appropriate predictive modeling techniques.\n• Use data mining software.',
-        prereq: 'STAT 321'
+        prereq: 'STAT 321',
+        resource: 'https://szhang2025.github.io/DM/',
+        lectureNotes: 'https://szhang2025.github.io/DMLectureNotes/'
       }
     };
 
-    // DOM references
+    // DOM refs
     const courseSelector = document.getElementById('courseSelector');
     const courseTitle = document.getElementById('courseTitle');
     const instructorName = document.getElementById('instructorName');
@@ -442,19 +400,78 @@ Week 14: Final Exam</textarea></div>
         classroom.value = data.room;
         courseDescription.value = data.description;
         learningOutcomes.value = data.outcomes;
-        // Update schedule to be more course-specific
+
+        // Update schedule & lecture notes based on course
         if (key.includes('STAT353')) {
-          courseSchedule.value = 'Week 1: Introduction, Probability Distributions\nWeek 2: Descriptive Statistics\nWeek 3: Sampling and Estimation\nWeek 4: Confidence Intervals\nWeek 5: Hypothesis Testing I\nWeek 6: Hypothesis Testing II\nWeek 7: One-Way ANOVA\nWeek 8: Simple Linear Regression\nWeek 9: Multiple Regression\nWeek 10: Model Building\nWeek 11: Quality Control Basics\nWeek 12: Software Applications\nWeek 13: Review\nWeek 14: Final Exam';
+          courseSchedule.value = `Week 1: Topic 1 — Experiment, Sample Space, Events & Counting Methods
+Week 2: Topic 2 — Probability, Conditional Probability, Independence & Bayes' Formula
+Week 3: Topic 3 — Discrete Random Variables: pmf, Mean, SD, Binomial, Geometric & Poisson
+Week 4: Topic 4 — Continuous Random Variables: Mean, SD, Uniform, Normal & Exponential
+Week 5: Topic 5 — Joint Distributions, Covariance & Correlation
+Week 6: Topic 6 — Population & Sample, Descriptive Statistics & Charts
+Week 7: Topic 7 — Sampling Distribution, Bias & Standard Error
+Week 8: Topic 8 — Confidence Interval & Hypothesis Testing for a Single Proportion
+Week 9: Topic 9 — CI & Hypothesis Testing for the Difference Between Two Proportions
+Week 10: Topic 10 — CI & Hypothesis Testing for a Single Population Mean
+Week 11: Topic 11 — CI & Hypothesis Testing for the Difference Between Two Population Means
+Week 12: Topic 12 — Chi-Square Tests: Goodness of Fit, Homogeneity & Independence
+Week 13: Topic 13 — One-Way ANOVA and Multiple Testing
+Week 14: Topic 14 — Simple & Multiple Linear Regression
+Week 15: Topic 15 — Control Charts: x̄, R & p Chart; Comprehensive Review
+Week 16: Final Exam`;
+          links.value = `• STAT 353 Topic Quiz Challenge: https://szhang2025.github.io/Stat353Team/
+• D2L: https://d2l.scsu.edu
+• RStudio Cloud / Posit Cloud: https://posit.cloud/
+• STAT 353 Lecture Notes: https://rpubs.com/scsustat/stat353`;
         } else if (key.includes('STAT360')) {
-          courseSchedule.value = 'Week 1: Introduction to Data Visualization\nWeek 2: Data Exploration and Cleaning\nWeek 3: Static Visualizations (ggplot2)\nWeek 4: Advanced Static Visualizations\nWeek 5: Interactive Visualizations\nWeek 6: Dashboard Design\nWeek 7: Visualizing High-Dimensional Data\nWeek 8: Time Series Visualization\nWeek 9: Geospatial Visualization\nWeek 10: Storytelling with Data\nWeek 11: Design Principles\nWeek 12: Project Work\nWeek 13: Presentations\nWeek 14: Final Project Due';
+          courseSchedule.value = `Week 1: Chapter 1 — Introduction to Data Visualization; R, RStudio, ggplot2, Grammar of Graphics
+Week 2: Chapter 2 — The Grammar of Graphics: aesthetics, geoms, scales, coordinates & layers
+Week 3: Chapter 3 — Visualizing Distributions: histograms, density plots, boxplots, violin plots & QQ plots
+Week 4: Chapter 4 — Visualizing Relationships: scatterplots, bubble charts, correlation matrices & pair plots
+Week 5: Chapter 5 — Visualizing Categorical Data: bar charts, lollipop charts, dot plots, Cleveland dot charts & mosaic plots
+Week 6: Chapter 6 — Visualizing Time Series: line charts, area charts, calendar heatmaps & seasonal decomposition
+Week 7: Chapter 7 — Visualizing Proportions: pie charts, stacked bars, treemaps & waffle charts
+Week 8: Chapter 8 — Visualizing Spatial Data: choropleth, point maps, dot density maps & sf
+Week 9: Chapter 9 — Color, Themes & Styling: accessible palettes, themes & visual refinement
+Week 10: Chapter 10 — Multivariate & Faceted Plots: faceting, heatmaps, parallel coordinates, pair plots & multi-panel figures
+Week 11: Chapter 11 — Interactive Visualizations: plotly, gganimate, Shiny, leaflet & DT
+Week 12: Chapter 12 — Communicating with Data: exploratory vs. explanatory thinking, annotation, data-ink, critique & reproducibility
+Week 13: Integrated Visualization Project — data exploration, design and implementation
+Week 14: Project Presentations / Critique / Revision
+Week 15: Final Visualization Portfolio / Comprehensive Review
+Week 16: Final Exam / Final Project Due`;
+          links.value = `• Data Visualization with R: https://szhang2025.github.io/DataVisualizationBook/
+• D2L: https://d2l.scsu.edu
+• RStudio / Posit Cloud: https://posit.cloud/
+• Lecture Notes: https://szhang2025.github.io/DataVisualizationBook/`;
         } else if (key.includes('STAT415')) {
-          courseSchedule.value = 'Week 1: Introduction to Data Mining\nWeek 2: Data Preparation and Exploration\nWeek 3: Classification and Regression Trees\nWeek 4: Logistic Regression\nWeek 5: Neural Networks\nWeek 6: Random Forests\nWeek 7: Boosted Trees\nWeek 8: Model Evaluation and Selection\nWeek 9: Handling Missing Values\nWeek 10: Handling Outliers\nWeek 11: Model Deployment\nWeek 12: Advanced Topics\nWeek 13: Project Work\nWeek 14: Final Project Due';
+          courseSchedule.value = `Week 1: Introduction to Data Mining; data mining workflow, predictive modeling and applications
+Week 2: Data Input & Data Exploration; CSV import, data structure, target variables and distributions
+Week 3: Data Preparation; missing values, outliers, variable preparation and model-ready data
+Week 4: Model Configuration; classification vs. regression and selection of a target variable
+Week 5: Linear & Logistic Regression; predictive modeling foundations
+Week 6: Decision Trees; classification and regression trees
+Week 7: K-Nearest Neighbors & Support Vector Machines
+Week 8: Neural Networks; classification and regression applications
+Week 9: Random Forests; ensemble learning and feature importance
+Week 10: Model Validation; train/test split and cross-validation
+Week 11: Model Evaluation; accuracy, precision, recall, F1, ROC/AUC and regression performance
+Week 12: Lift Charts & Feature Importance; comparing and interpreting competing models
+Week 13: Model Selection & Deployment; compare models and select the best predictive model
+Week 14: Integrated Data Mining Project — end-to-end workflow
+Week 15: Project Presentations / Model Interpretation; Comprehensive Review
+Week 16: Final Exam / Final Project Due`;
+          links.value = `• DataMine Pro — Machine Learning Analytics: https://szhang2025.github.io/DM/
+• D2L: https://d2l.scsu.edu
+• RStudio / Posit Cloud: https://posit.cloud/
+• STAT 415 Lecture Notes: https://szhang2025.github.io/DMLectureNotes/
+• Novel on ML: https://szhang2025.github.io/NovelOnML/`;
         }
         updatePreview();
       }
     });
 
-    // Helper: format text with bullet lists
+    // helper: bullet formatting
     function formatTextToHTML(text) {
       if (!text || text.trim() === '') return 'Not provided.';
       const lines = text.split('\n').filter(line => line.trim() !== '');
@@ -470,25 +487,96 @@ Week 14: Final Exam</textarea></div>
       }
     }
 
-    // Format schedule as table
-    function formatSchedule(text) {
+    // coursework due-dates
+    const courseworkSchedules = {
+      'STAT353-41': [
+        ['Week 1', 'Course orientation; diagnostic / setup'],
+        ['Week 2', 'Topic Quiz 1'],
+        ['Week 3', 'Topic Quiz 2'],
+        ['Week 4', 'Topic Quiz 3'],
+        ['Week 5', 'Topic Quiz 4'],
+        ['Week 6', 'Topic Quiz 5; Midterm Exam 1'],
+        ['Week 7', 'Topic Quiz 6'],
+        ['Week 8', 'Topic Quiz 7'],
+        ['Week 9', 'Topic Quiz 8'],
+        ['Week 10', 'Topic Quiz 9; Midterm Exam 2'],
+        ['Week 11', 'Topic Quiz 10'],
+        ['Week 12', 'Topic Quiz 11'],
+        ['Week 13', 'Topic Quiz 12; Project 1 Due'],
+        ['Week 14', 'Topic Quiz 13; Project 2 Due'],
+        ['Week 15', 'Topic Quiz 15; Project 3 Due; Comprehensive Review'],
+        ['Week 16', 'Final Exam']
+      ],
+      'STAT360-40': [
+        ['Week 1', 'Visualization Exercise 1 / R setup'],
+        ['Week 2', 'Visualization Exercise 2'],
+        ['Week 3', 'Visualization Exercise 3'],
+        ['Week 4', 'Visualization Exercise 4'],
+        ['Week 5', 'Visualization Exercise 5; Midterm Exam 1'],
+        ['Week 6', 'Visualization Exercise 6'],
+        ['Week 7', 'Visualization Exercise 7'],
+        ['Week 8', 'Visualization Exercise 8; Midterm Exam 2'],
+        ['Week 9', 'Visualization Exercise 9'],
+        ['Week 10', 'Visualization Exercise 10'],
+        ['Week 11', 'Interactive Visualization Assignment'],
+        ['Week 12', 'Visualization Critique / Communication Assignment'],
+        ['Week 13', 'Final Visualization Project — proposal / draft due'],
+        ['Week 14', 'Final Visualization Project — presentation'],
+        ['Week 15', 'Final Visualization Portfolio due'],
+        ['Week 16', 'Final Project revision / course wrap-up']
+      ],
+      'STAT415-01': [
+        ['Week 1', 'Data Mining Exercise 1 / software setup'],
+        ['Week 2', 'Data Exploration Assignment'],
+        ['Week 3', 'Data Preparation Assignment; Project proposal'],
+        ['Week 4', 'Regression Assignment; Midterm Exam 1'],
+        ['Week 5', 'Logistic Regression Assignment'],
+        ['Week 6', 'Decision Tree Assignment'],
+        ['Week 7', 'KNN / SVM Assignment'],
+        ['Week 8', 'Neural Network Assignment; Midterm Exam 2'],
+        ['Week 9', 'Random Forest Assignment'],
+        ['Week 10', 'Model Validation Assignment'],
+        ['Week 11', 'Model Evaluation / ROC-AUC Assignment'],
+        ['Week 12', 'Lift Chart & Feature Importance Assignment'],
+        ['Week 13', 'Model Selection Report'],
+        ['Week 14', 'Final Data Mining Project — complete analysis due'],
+        ['Week 15', 'Final Project Presentation; Comprehensive Review'],
+        ['Week 16', 'Final Exam; Final Project / Portfolio Due']
+      ]
+    };
+
+    function getCourseworkDue(key, weekLabel) {
+      const items = courseworkSchedules[key] || [];
+      const match = items.find(item => item[0].toLowerCase() === weekLabel.toLowerCase());
+      return match ? match[1] : '';
+    }
+
+    function formatScheduleWithDueDates(text, key) {
       if (!text || text.trim() === '') return 'Not provided.';
       const lines = text.split('\n').filter(line => line.trim() !== '');
       if (lines.length === 0) return 'Not provided.';
-      let tableHTML = `<table class="schedule-table"><thead><tr><th>Week</th><th>Topics / Activities</th></tr></thead><tbody>`;
+      let tableHTML = `<table class="schedule-table">
+        <thead><tr><th>Week</th><th>Topics / Activities</th><th>Coursework Due</th></tr></thead><tbody>`;
       lines.forEach(line => {
         const parts = line.split(':');
         if (parts.length >= 2) {
-          tableHTML += `<tr><td><strong>${parts[0].trim()}</strong></td><td>${parts.slice(1).join(':').trim()}</td></tr>`;
+          const week = parts[0].trim();
+          const topic = parts.slice(1).join(':').trim();
+          const due = getCourseworkDue(key, week);
+          tableHTML += `<tr>
+            <td><strong>${week}</strong></td>
+            <td>${topic}</td>
+            <td>${due ? `<strong>${due}</strong>` : '—'}</td>
+          </tr>`;
         } else {
-          tableHTML += `<tr><td colspan="2">${line}</td></tr>`;
+          tableHTML += `<tr><td colspan="3">${line}</td></tr>`;
         }
       });
       tableHTML += `</tbody></table>`;
       return tableHTML;
     }
 
-    // ----- BUILD SYLLABUS -----
+    // Build syllabus
     function buildSyllabusHTML() {
       const title = courseTitle.value || 'Course Title';
       const instructor = instructorName.value || 'Instructor';
@@ -503,18 +591,15 @@ Week 14: Final Exam</textarea></div>
       const textbookText = textbook.value || 'No textbook required.';
       const linksText = links.value || 'No additional links provided.';
       const scheduleText = courseSchedule.value || '';
-
-      // Get prereq from catalog
       const selectedKey = courseSelector.value;
       const prereq = courseCatalog[selectedKey]?.prereq || 'None';
+      const lectureNoteLink = courseCatalog[selectedKey]?.lectureNotes || '';
 
-      // Welcome message
       const welcomeMessage = `<div class="statement-block" style="border-left-color: #0a2e4b; background: #eef5fa;">
         <strong>Welcome to ${title}!</strong>
         <p>I am delighted to have you in this course. Together, we will explore essential statistical methods and their applications. My goal is to create a supportive learning environment where everyone can succeed. I encourage you to ask questions, collaborate, and engage actively. I look forward to a great semester!</p>
       </div>`;
 
-      // SCSU Policies
       const attendancePolicy = `<div class="statement-block">
         <strong>Attendance Policy (SCSU 2.05):</strong>
         <p>Regular attendance is expected. Absences for bereavement, medical issues, religious observances, university-sanctioned events, and court appearances will be accommodated with proper notice. Provide written notice prior to absence when possible. Make-up work arrangements must be in writing. Instructors cannot require a doctor's note for one or two absences.</p>
@@ -534,7 +619,6 @@ Week 14: Final Exam</textarea></div>
 
       const accessibilityStatement = `<div class="statement-block"><strong>Accessibility:</strong> This course is designed with accessibility in mind. Students with disabilities should contact Student Accessibility Services (SAS) at 320-308-4080 or sas@stcloudstate.edu.</div>`;
 
-      // Additional sections
       const studentResponsibilities = `<div class="statement-block">
         <strong>Student Responsibilities:</strong>
         <ul>
@@ -568,13 +652,12 @@ Week 14: Final Exam</textarea></div>
         </ul>
       </div>`;
 
-      // Format content
       const outcomesHTML = formatTextToHTML(outcomes);
       const gradingHTML = formatTextToHTML(grading);
       const courseworkHTML = formatTextToHTML(work);
       const textbookHTML = formatTextToHTML(textbookText);
       const linksHTML = formatTextToHTML(linksText);
-      const scheduleHTML = formatSchedule(scheduleText);
+      const scheduleHTML = formatScheduleWithDueDates(scheduleText, selectedKey);
 
       return `
         <div class="syllabus-header">
@@ -588,6 +671,7 @@ Week 14: Final Exam</textarea></div>
           <strong>Classroom:</strong> <span>${room}</span>
           <strong>Office Hours:</strong> <span>${office}</span>
           <strong>Prerequisites:</strong> <span>${prereq}</span>
+          <strong>Lecture Notes:</strong> <span><a href="${lectureNoteLink}" target="_blank">${lectureNoteLink || 'Available in Links section'}</a></span>
         </div>
 
         ${welcomeMessage}
@@ -607,7 +691,7 @@ Week 14: Final Exam</textarea></div>
         <h3><i class="fas fa-book" style="color:#c8102e;"></i> Textbook</h3>
         ${textbookHTML}
 
-        <h3><i class="fas fa-link" style="color:#c8102e;"></i> Lecture Notes / Links</h3>
+        <h3><i class="fas fa-link" style="color:#c8102e;"></i> Links & Lecture Notes</h3>
         ${linksHTML}
 
         <h3><i class="fas fa-calendar-alt" style="color:#c8102e;"></i> Course Schedule</h3>
@@ -623,23 +707,19 @@ Week 14: Final Exam</textarea></div>
 
         <p style="margin-top:1.2rem; font-size:0.85rem; color:#4a5f73; border-top:1px solid #dee6f0; padding-top:0.8rem;">
           <i class="fas fa-info-circle"></i> Course data from <a href="https://catalog.stcloudstate.edu/" target="_blank">SCSU Catalog</a>.
-          Policies adapted from SCSU resources.
+          Policies adapted from SCSU resources. Lecture notes: ${lectureNoteLink ? `<a href="${lectureNoteLink}" target="_blank">${lectureNoteLink}</a>` : 'see Links section.'}
         </p>
       `;
     }
 
-    // Update preview
     function updatePreview() {
       syllabusContent.innerHTML = buildSyllabusHTML();
     }
 
-    // Initial render
     updatePreview();
-
-    // Refresh button
     document.getElementById('previewBtn').addEventListener('click', updatePreview);
 
-    // ----- DOWNLOAD HELPERS -----
+    // Download functions
     function getFullSyllabusHTML() {
       const contentHTML = buildSyllabusHTML();
       return `<!DOCTYPE html>
@@ -660,6 +740,7 @@ Week 14: Final Exam</textarea></div>
   .schedule-table th { background:#0a2e4b; color:white; padding:0.5rem 0.8rem; text-align:left; }
   .schedule-table td { padding:0.4rem 0.8rem; border-bottom:1px solid #e9edf3; }
   .schedule-table tr:nth-child(even) { background:#f8fafc; }
+  .schedule-table td:last-child { font-size:0.88rem; color:#7a1b2b; }
 </style>
 </head>
 <body>
@@ -668,7 +749,6 @@ ${contentHTML}
 </html>`;
     }
 
-    // Download HTML
     document.getElementById('downloadHtml').addEventListener('click', function() {
       const html = getFullSyllabusHTML();
       const blob = new Blob([html], { type: 'text/html' });
@@ -680,7 +760,6 @@ ${contentHTML}
       URL.revokeObjectURL(url);
     });
 
-    // Download Word
     document.getElementById('downloadWord').addEventListener('click', function() {
       const html = getFullSyllabusHTML();
       const blob = new Blob([html], { type: 'application/msword' });
@@ -692,7 +771,6 @@ ${contentHTML}
       URL.revokeObjectURL(url);
     });
 
-    // Download PDF
     document.getElementById('downloadPdf').addEventListener('click', function() {
       const content = syllabusContent;
       const opt = {
